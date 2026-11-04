@@ -10,8 +10,8 @@ datasets:
   train:
     name: TrainSet
     type: Dataset_PairedImage
-    dataroot_gt: E:/PythonFile/Project/LLIE-Model-DarkLoss/dataset/LOL/LOLv2-real/Train/GT
-    dataroot_lq: E:/PythonFile/Project/LLIE-Model-DarkLoss/dataset/LOL/LOLv2-real/Train/Input
+    dataroot_gt: /kaggle/input/datasets/vinhnub/lolv2-real11111/LOLv2-real/Train/GT
+    dataroot_lq: /kaggle/input/datasets/vinhnub/lolv2-real11111/LOLv2-real/Train/Input
     geometric_augs: true
 
     filename_tmpl: '{}'
@@ -43,8 +43,8 @@ datasets:
   val:
     name: ValSet
     type: Dataset_PairedImage
-    dataroot_gt: E:/PythonFile/Project/LLIE-Model-DarkLoss/dataset/LOL/LOLv2-real/Test/GT
-    dataroot_lq: E:/PythonFile/Project/LLIE-Model-DarkLoss/dataset/LOL/LOLv2-real/Test/Input
+    dataroot_gt: /kaggle/input/datasets/vinhnub/lolv2-real11111/LOLv2-real/Test/GT
+    dataroot_lq: /kaggle/input/datasets/vinhnub/lolv2-real11111/LOLv2-real/Test/Input
     io_backend:
       type: disk
 
