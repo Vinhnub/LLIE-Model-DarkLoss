@@ -122,9 +122,9 @@ def get_requirements(filename='requirements.txt'):
 
 
 if __name__ == '__main__':
-    if '--no_cuda_ext' in sys.argv or os.getenv('BASICSR_EXT', '0') == '0':
+    if '--no_cuda_ext' in sys.argv:
         ext_modules = []
-        if '--no_cuda_ext' in sys.argv: sys.argv.remove('--no_cuda_ext')
+        sys.argv.remove('--no_cuda_ext')
     else:
         ext_modules = [
             make_cuda_ext(
@@ -169,7 +169,7 @@ if __name__ == '__main__':
             'Programming Language :: Python :: 3.8',
         ],
         license='Apache License 2.0',
-        # setup_requires=['cython', 'numpy'],
+        setup_requires=['cython', 'numpy'],
         install_requires=get_requirements(),
         ext_modules=ext_modules,
         cmdclass={'build_ext': BuildExtension},
