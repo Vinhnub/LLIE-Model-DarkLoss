@@ -95,6 +95,15 @@ train:
     type: L1Loss
     loss_weight: 1
     reduction: mean
+    # Dark focus
+    dark_focus: dark        # 'dark' / true: ưu tiên vùng tối của LQ
+    weight_source: lq       # tính từ ảnh đầu vào LQ
+    focus_strength: 1.0     # mức ưu tiên phạt thêm (alpha)
+    smooth_kernel: 7        # kích thước lọc mượt khử nhiễu
+    normalize_lum: true     # chuẩn hóa min-max tương đối từng ảnh
+    norm_weight: true       # giữ nguyên scale loss = 1.0
+    # Balance
+    # dark_focus: balance 
 
 # validation settings
 val:

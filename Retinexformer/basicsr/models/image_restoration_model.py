@@ -182,7 +182,10 @@ class ImageCleanModel(BaseModel):
             # pixel loss
             l_pix = 0.
             for pred in preds:
-                l_pix += self.cri_pix(pred, self.gt) #此处统计batch的loss
+                if getattr(self.cri_pix, 'need_lq', False):
+                    l_pix += self.cri_pix(pred, self.gt, lq=self.lq)
+                else:
+                    l_pix += self.cri_pix(pred, self.gt)  # original
 
             loss_dict['l_pix'] = l_pix
 
