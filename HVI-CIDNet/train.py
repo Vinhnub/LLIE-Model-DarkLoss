@@ -269,9 +269,9 @@ if __name__ == '__main__':
             psnr.append(avg_psnr)
             ssim.append(avg_ssim)
             lpips.append(avg_lpips)
-            print(psnr)
-            print(ssim)
-            print(lpips)
+            # print(psnr)
+            # print(ssim)
+            # print(lpips)
             with open(f"./results/training/metrics{now}.md", "a") as f:
                 f.write(f"| {epoch} | { avg_psnr:.4f} | {avg_ssim:.4f} | {avg_lpips:.4f} |\n")  
         torch.cuda.empty_cache()
