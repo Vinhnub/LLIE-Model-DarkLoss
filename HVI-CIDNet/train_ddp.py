@@ -56,10 +56,10 @@ def train_init():
     # Khởi tạo tiến trình phân tán (DDP)
     if 'LOCAL_RANK' in os.environ:
         local_rank = int(os.environ['LOCAL_RANK'])
+        torch.cuda.set_device(local_rank)
         # Trên Windows (os.name == 'nt'), NCCL không được hỗ trợ chính thức nên tự động chuyển sang 'gloo'
         backend = 'gloo' if os.name == 'nt' else 'nccl'
         dist.init_process_group(backend=backend)
-        torch.cuda.set_device(local_rank)
     else:
         local_rank = 0
         if torch.cuda.is_available():
@@ -511,3 +511,6 @@ if __name__ == '__main__':
         if dist.is_initialized():
             dist.barrier()
         torch.cuda.empty_cache()
+
+    if dist.is_initialized():
+        dist.destroy_process_group()
